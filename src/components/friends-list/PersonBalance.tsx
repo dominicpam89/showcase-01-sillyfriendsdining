@@ -1,7 +1,7 @@
-import { MockPersonType } from "@/lib/mock-data";
+import { FriendType } from "@/lib/mock-data";
 
 interface Props {
-	person: MockPersonType;
+	person: FriendType;
 }
 
 export default function PersonBalance({ person }: Props) {

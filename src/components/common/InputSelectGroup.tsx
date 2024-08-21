@@ -5,13 +5,13 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
-import { MockPersonType } from "@/lib/mock-data";
+import { FriendType } from "@/lib/mock-data";
 import React from "react";
 import { Control, FieldValues, Path } from "react-hook-form";
 import { FormControl, FormField, FormItem, FormMessage } from "../ui/form";
 
 interface Props<T extends FieldValues> {
-	person: MockPersonType;
+	person: FriendType;
 	placeholder: string;
 	icon: React.ReactNode;
 	name: Path<T>;

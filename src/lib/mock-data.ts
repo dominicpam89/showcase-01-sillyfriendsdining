@@ -25,4 +25,4 @@ export const mockpeople = [
 	},
 ];
 
-export type MockPersonType = (typeof mockpeople)[0];
+export type FriendType = (typeof mockpeople)[0];

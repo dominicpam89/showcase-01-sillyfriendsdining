@@ -1,9 +1,9 @@
 import CardPerson from "./CardPerson";
 import { it, expect } from "vitest";
 import { screen, render, within } from "@testing-library/react";
-import { MockPersonType } from "@/lib/mock-data";
+import { FriendType } from "@/lib/mock-data";
 
-const mockPerson: MockPersonType = {
+const mockPerson: FriendType = {
 	id: 1,
 	name: "John Doe",
 	image: "https://example.com/avatar.jpg",
@@ -40,7 +40,7 @@ it("displays the correct name and balance", () => {
 });
 
 it("handles negative balance correctly", () => {
-	const mockPersonWithNegativeBalance: MockPersonType = {
+	const mockPersonWithNegativeBalance: FriendType = {
 		...mockPerson,
 		balance: -500,
 	};
@@ -52,7 +52,7 @@ it("handles negative balance correctly", () => {
 });
 
 it("handles zero balance correctly", () => {
-	const mockPersonWithZeroBalance: MockPersonType = {
+	const mockPersonWithZeroBalance: FriendType = {
 		...mockPerson,
 		balance: 0,
 	};
@@ -64,7 +64,7 @@ it("handles zero balance correctly", () => {
 });
 
 it("handles positive balance correctly", () => {
-	const mockPersonWithZeroBalance: MockPersonType = {
+	const mockPersonWithZeroBalance: FriendType = {
 		...mockPerson,
 		balance: 500,
 	};

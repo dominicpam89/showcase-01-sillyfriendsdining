@@ -5,7 +5,7 @@ import {
 	CircleUserIcon as WhoIcon,
 } from "lucide-react";
 import InputGroup from "../common/InputGroup";
-import { MockPersonType } from "@/lib/mock-data";
+import { FriendType } from "@/lib/mock-data";
 import InputSelectGroup from "../common/InputSelectGroup";
 import { SubmitHandler, useForm, FormProvider } from "react-hook-form";
 import {
@@ -19,7 +19,7 @@ import { DrawerClose } from "../ui/drawer-main";
 const iconClass = "w-full h-full";
 
 interface Props {
-	person: MockPersonType;
+	person: FriendType;
 }
 export default function FormBill({ person }: Props) {
 	const methods = useForm<FormBillSchemaType>({

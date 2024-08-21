@@ -1,10 +1,10 @@
-import { MockPersonType } from "@/lib/mock-data";
+import { FriendType } from "@/lib/mock-data";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import PersonBalance from "./PersonBalance";
 import ManageBillDrawer from "./ManageBillDrawer";
 
 interface Props {
-	person: MockPersonType;
+	person: FriendType;
 }
 export default function CardPerson({ person }: Props) {
 	return (

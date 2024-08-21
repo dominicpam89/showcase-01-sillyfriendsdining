@@ -8,11 +8,11 @@ import {
 	DrawerTrigger,
 } from "@/components/ui/drawer-main";
 import { Button } from "@/components/ui/button";
-import { MockPersonType } from "@/lib/mock-data";
+import { FriendType } from "@/lib/mock-data";
 import FormBill from "../forms/FormBill";
 
 interface Props {
-	person: MockPersonType;
+	person: FriendType;
 }
 export default function ManageBillDrawer({ person }: Props) {
 	return (
