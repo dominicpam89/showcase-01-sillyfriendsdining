@@ -16,23 +16,26 @@ interface Props {
 export default function FormBill({ person }: Props) {
 	return (
 		<form aria-label="form-bill" className="flex flex-col gap-4">
-			<InputGroup
+			{/* <InputGroup
 				icon={<BillIcon className={iconClass} />}
 				placeholder="Total Bill"
+				inputType="number"
 			/>
 			<InputGroup
 				icon={<ExpenseIcon className={iconClass} />}
 				placeholder="Your Expense"
+				inputType="number"
 			/>
 			<InputGroup
 				icon={<FriendExpense className={iconClass} />}
 				placeholder={`${person.name} expense`}
+				inputType="number"
 			/>
 			<InputSelectGroup
 				person={person}
 				icon={<WhoIcon className={iconClass} />}
 				placeholder="Who is paying the bill?"
-			/>
+			/> */}
 		</form>
 	);
 }
