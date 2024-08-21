@@ -1,6 +1,9 @@
 import { useForm, FormProvider, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema, LoginSchemaType } from "@/lib/definition/auth.definition";
+import {
+	loginSchema,
+	LoginSchemaType as SchemaT,
+} from "@/lib/definition/auth.definition";
 import InputGroup from "../common/InputGroup";
 import {
 	MailsIcon as EmailIcon,
@@ -16,14 +19,16 @@ interface Props {
 	switchTab: (val: string) => void;
 }
 export default function FormLogin({ switchTab }: Props) {
-	const methods = useForm<LoginSchemaType>({
+	const methods = useForm<SchemaT>({
 		resolver: zodResolver(loginSchema),
 		defaultValues: {
 			email: "",
 			password: "",
 		},
+		mode: "onBlur",
+		reValidateMode: "onChange",
 	});
-	const onValid: SubmitHandler<LoginSchemaType> = (data) => {
+	const onValid: SubmitHandler<SchemaT> = (data) => {
 		console.log(data);
 	};
 	return (
@@ -43,18 +48,18 @@ export default function FormLogin({ switchTab }: Props) {
 						/>
 					</p>
 				</div>
-				<InputGroup<LoginSchemaType>
+				<InputGroup<SchemaT>
 					icon={<EmailIcon className={iconClass} />}
 					name="email"
 					placeholder="Email"
 				/>
-				<InputGroup<LoginSchemaType>
+				<InputGroup<SchemaT>
 					icon={<PasswordIcon className={iconClass} />}
 					name="password"
 					inputType="password"
 					placeholder="Your Password"
 				/>
-				<FormButtons />
+				<FormButtons<SchemaT> />
 			</FormContainer>
 		</FormProvider>
 	);

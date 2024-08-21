@@ -2,17 +2,17 @@ import { UsersRoundIcon, FileImageIcon } from "lucide-react";
 import InputGroup from "../common/InputGroup";
 import FormButtons from "../common/FormButtons";
 import { useForm, FormProvider, SubmitHandler } from "react-hook-form";
-import { FormAddFriendType } from "@/lib/definition/form-add-friend.definition";
+import { FormAddFriendType as SchemaT } from "@/lib/definition/form-add-friend.definition";
 import InputImage from "../common/InputImage";
 
 const iconClass = "w-full h-full";
 
 export default function FormAddFriend() {
-	const methods = useForm<FormAddFriendType>({
+	const methods = useForm<SchemaT>({
 		mode: "onBlur",
 		reValidateMode: "onChange",
 	});
-	const onValid: SubmitHandler<FormAddFriendType> = (data) => {
+	const onValid: SubmitHandler<SchemaT> = (data) => {
 		console.log(data);
 	};
 	return (
@@ -22,7 +22,7 @@ export default function FormAddFriend() {
 				className="max-w-lg w-full mt-8 flex flex-col gap-4"
 				onSubmit={methods.handleSubmit(onValid)}
 			>
-				<InputGroup<FormAddFriendType>
+				<InputGroup<SchemaT>
 					icon={<UsersRoundIcon className={iconClass} />}
 					placeholder="Your friend's name"
 					name="name"
@@ -53,7 +53,7 @@ export default function FormAddFriend() {
 						},
 					}}
 				/>
-				<FormButtons />
+				<FormButtons<SchemaT> />
 			</form>
 		</FormProvider>
 	);

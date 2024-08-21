@@ -2,7 +2,7 @@ import { useForm, FormProvider, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
 	registerSchema,
-	RegisterSchemaType,
+	RegisterSchemaType as SchemaT,
 } from "@/lib/definition/auth.definition";
 import InputGroup from "../common/InputGroup";
 import {
@@ -21,7 +21,7 @@ interface Props {
 	switchTab: (val: string) => void;
 }
 export default function FormRegister({ switchTab }: Props) {
-	const methods = useForm<RegisterSchemaType>({
+	const methods = useForm<SchemaT>({
 		resolver: zodResolver(registerSchema),
 		defaultValues: {
 			firstName: "",
@@ -30,8 +30,10 @@ export default function FormRegister({ switchTab }: Props) {
 			password: "",
 			confirmationPassword: "",
 		},
+		mode: "onBlur",
+		reValidateMode: "onChange",
 	});
-	const onValid: SubmitHandler<RegisterSchemaType> = (data) => {
+	const onValid: SubmitHandler<SchemaT> = (data) => {
 		console.log(data);
 	};
 	return (
@@ -52,35 +54,35 @@ export default function FormRegister({ switchTab }: Props) {
 					</p>
 				</div>
 				<div className="flex gap-2">
-					<InputGroup<RegisterSchemaType>
+					<InputGroup<SchemaT>
 						icon={<NameIcon className={iconClass} />}
 						name="firstName"
 						placeholder="John"
 					/>
-					<InputGroup<RegisterSchemaType>
+					<InputGroup<SchemaT>
 						icon={<NameIcon className={iconClass} />}
 						name="lastName"
 						placeholder="Doe"
 					/>
 				</div>
-				<InputGroup<RegisterSchemaType>
+				<InputGroup<SchemaT>
 					icon={<EmailIcon className={iconClass} />}
 					name="email"
 					placeholder="Email"
 				/>
-				<InputGroup<RegisterSchemaType>
+				<InputGroup<SchemaT>
 					icon={<PasswordIcon className={iconClass} />}
 					name="password"
 					inputType="password"
 					placeholder="Your Password"
 				/>
-				<InputGroup<RegisterSchemaType>
+				<InputGroup<SchemaT>
 					icon={<KeyIcon className={iconClass} />}
 					name="confirmationPassword"
 					inputType="password"
 					placeholder="Confirmation Password"
 				/>
-				<FormButtons />
+				<FormButtons<SchemaT> />
 			</FormContainer>
 		</FormProvider>
 	);
