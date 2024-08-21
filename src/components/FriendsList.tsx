@@ -1,6 +1,6 @@
 import { mockpeople } from "@/lib/mock-data";
-import CardContainer from "./PeopleList/CardContainer";
-import CardPerson from "./PeopleList/CardPerson";
+import CardContainer from "./FriendsList/CardContainer";
+import CardPerson from "./FriendsList/CardPerson";
 
 export default function PeopleList() {
 	return (
