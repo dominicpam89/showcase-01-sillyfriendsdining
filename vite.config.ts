@@ -6,6 +6,13 @@ export default defineConfig(({ mode }) => {
 	const env = loadEnv(mode, process.cwd(), "");
 	return {
 		plugins: [react()],
-		__APP_ENV__: JSON.stringify(env.APP_ENV),
+		define: {
+			__APP_ENV__: JSON.stringify(env.APP_ENV),
+		},
+		test: {
+			globals: true,
+			environment: "jsdom",
+			setupFiles: "./src/vitest.setup.ts",
+		},
 	};
 });

@@ -5,11 +5,17 @@ import "./App.css";
 
 function App() {
 	const [count, setCount] = useState(0);
+	console.log(import.meta.env.VITE_APP_NAME);
 	return (
 		<>
 			<div>
 				<a href="https://vitejs.dev" target="_blank">
-					<img src={viteLogo} className="logo" alt="Vite logo" />
+					<img
+						aria-label="logo"
+						src={viteLogo}
+						className="logo"
+						alt="Vite logo"
+					/>
 				</a>
 				<a href="https://react.dev" target="_blank">
 					<img src={reactLogo} className="logo react" alt="React logo" />
