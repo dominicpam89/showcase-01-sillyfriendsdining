@@ -15,7 +15,7 @@ export default function CardDialog() {
 			<Button asChild>
 				<DialogTrigger>Add Friend</DialogTrigger>
 			</Button>
-			<DialogContent>
+			<DialogContent className="p-16 space-y-2">
 				<DialogHeader>
 					<DialogTitle>Add Friend</DialogTitle>
 					<DialogDescription>

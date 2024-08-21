@@ -1,5 +1,5 @@
 import CardPerson from "./CardPerson";
-import { it, expect, describe } from "vitest";
+import { it, expect } from "vitest";
 import { screen, render, within } from "@testing-library/react";
 import { MockPersonType } from "@/lib/mock-data";
 
