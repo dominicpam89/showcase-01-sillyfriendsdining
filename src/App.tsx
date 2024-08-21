@@ -1,10 +1,12 @@
 import AppContainer from "@/components/AppContainer";
-import FriendsList from "@/components/FriendsList";
+import AuthSelect from "./components/AuthSelect";
+// import FriendsList from "@/components/FriendsList";
 
 const App = () => {
 	return (
 		<AppContainer>
-			<FriendsList />
+			<AuthSelect />
+			{/* <FriendsList /> */}
 		</AppContainer>
 	);
 };
