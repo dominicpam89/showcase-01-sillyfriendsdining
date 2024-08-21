@@ -29,6 +29,11 @@ export async function firebaseRegisterUser({
 	password,
 	...registerData
 }: RegisterSchemaType) {
+	console.log("register firebase data: ", {
+		email,
+		password,
+		...registerData,
+	});
 	const { firstName, lastName } = registerData;
 	const fullName = firstName + " " + lastName;
 	try {

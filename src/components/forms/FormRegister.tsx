@@ -14,6 +14,10 @@ import {
 import FormButtons from "../common/FormButtons";
 import FormAuthSwitch from "./form-auth/FormAuthSwitch";
 import FormContainer from "./form-auth/FormContainer";
+import { useContext } from "react";
+import { ContextGlobal } from "@/lib/context/global.context";
+import { Spinner } from "@/components/ui/spinner";
+import FormErrorsDialog from "./form-auth/FormErrorsDialog";
 
 const iconClass = "w-full h-full opacity-80";
 
@@ -21,20 +25,21 @@ interface Props {
 	switchTab: (val: string) => void;
 }
 export default function FormRegister({ switchTab }: Props) {
+	const { registerUser, authLoading } = useContext(ContextGlobal);
 	const methods = useForm<SchemaT>({
 		resolver: zodResolver(registerSchema),
 		defaultValues: {
-			firstName: "",
-			lastName: "",
-			email: "",
-			password: "",
-			confirmationPassword: "",
+			firstName: "Tracy",
+			lastName: "Jackson",
+			email: "tracyjackson91802938@gmail.com",
+			password: "Tray!12345@",
+			confirmationPassword: "Tray!12345@",
 		},
 		mode: "onBlur",
 		reValidateMode: "onChange",
 	});
 	const onValid: SubmitHandler<SchemaT> = (data) => {
-		console.log(data);
+		registerUser(data);
 	};
 	return (
 		<FormProvider {...methods}>
@@ -42,6 +47,8 @@ export default function FormRegister({ switchTab }: Props) {
 				name="auth-register-form"
 				onSubmit={methods.handleSubmit(onValid)}
 			>
+				{authLoading && <Spinner size="large" />}
+				<FormErrorsDialog />
 				<div aria-label="form-heading" className="text-center space-y-2">
 					<h1 className="text-xl font-bold">Register Form</h1>
 					<p className="font-light">

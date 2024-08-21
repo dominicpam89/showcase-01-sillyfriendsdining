@@ -16,6 +16,7 @@ const initialState: ContextState = {
 	},
 	logout() {},
 
+	isError: false,
 	authError: {
 		additionalData: [],
 		message: "",

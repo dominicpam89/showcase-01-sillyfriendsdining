@@ -1,12 +1,15 @@
 import AppContainer from "@/components/AppContainer";
 import AuthSelect from "./components/AuthSelect";
-// import FriendsList from "@/components/FriendsList";
+import AppContent from "./components/AppContent";
+import { useContext } from "react";
+import { ContextGlobal } from "./lib/context/global.context";
 
 const App = () => {
+	const { currentUser } = useContext(ContextGlobal);
 	return (
 		<AppContainer>
-			<AuthSelect />
-			{/* <FriendsList /> */}
+			{!currentUser && <AuthSelect />}
+			{currentUser && <AppContent />}
 		</AppContainer>
 	);
 };

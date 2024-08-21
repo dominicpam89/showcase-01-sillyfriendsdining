@@ -18,6 +18,7 @@ export type ContextState = {
 	registerUser(data: RegisterSchemaType): void;
 	loginUser(data: LoginSchemaType): void;
 	logout(): void;
+	isError: boolean;
 	authError: AuthErrorType;
 	authLoading: boolean;
 };
