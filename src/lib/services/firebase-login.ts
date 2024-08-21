@@ -1,6 +1,7 @@
 import { AuthError, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/lib/firebase.config";
 import { LoginSchemaType } from "../definition/auth.definition";
+import { AuthErrorType } from "../context/global.context.type";
 
 /**
  * Logs in a user using Firebase authentication with email and password.
@@ -21,8 +22,13 @@ export async function firebaseLogin({ email, password }: LoginSchemaType) {
 	try {
 		const userCred = await signInWithEmailAndPassword(auth, email, password);
 		return userCred.user;
-	} catch (error) {
-		console.error(error);
-		throw error as AuthError;
+	} catch (err) {
+		console.error(err);
+		const error = err as AuthError;
+		throw {
+			name: error.name,
+			message: error.message,
+			additionalData: [error.code],
+		} as AuthErrorType;
 	}
 }

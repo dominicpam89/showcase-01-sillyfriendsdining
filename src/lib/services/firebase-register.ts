@@ -1,10 +1,11 @@
 import { auth } from "@/lib/firebase.config";
 import {
-	AuthError,
 	createUserWithEmailAndPassword,
 	updateProfile,
+	AuthError,
 } from "firebase/auth";
 import { RegisterSchemaType } from "../definition/auth.definition";
+import { AuthErrorType } from "../context/global.context.type";
 
 /**
  * Registers a new user with Firebase authentication using email and password, and updates the user's profile with their full name.
@@ -21,7 +22,7 @@ import { RegisterSchemaType } from "../definition/auth.definition";
  *
  * @returns {Promise<import("firebase/auth").User>} A promise that resolves to the newly registered user object.
  *
- * @throws {AuthError} If there is an error during the registration or profile update process, an AuthError is thrown.
+ * @throws {AuthErrorType} If there is an error during the registration or profile update process, an AuthErrorType is thrown.
  */
 export async function firebaseRegisterUser({
 	email,
@@ -41,6 +42,11 @@ export async function firebaseRegisterUser({
 		return userCred.user;
 	} catch (err) {
 		console.error(err);
-		throw err as AuthError;
+		const error = err as AuthError;
+		throw {
+			name: error.name,
+			message: error.message,
+			additionalData: [error.code.toString()],
+		} as AuthErrorType;
 	}
 }
