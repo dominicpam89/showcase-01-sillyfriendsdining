@@ -12,7 +12,7 @@ export default function PersonBalance({ person }: Props) {
 		);
 	} else if (person.balance > 0) {
 		return (
-			<p className="text-sm">
+			<p className="text-sm text-success">
 				{person.name} owes you ${person.balance}
 			</p>
 		);
