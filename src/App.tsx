@@ -4,7 +4,7 @@ const App = () => {
 	return (
 		<>
 			<p className="text-5xl font-extrabold">Test Tailwind</p>
-			<Button variant="secondary">Test shadcn component</Button>
+			<Button variant="default">Test shadcn component</Button>
 		</>
 	);
 };
