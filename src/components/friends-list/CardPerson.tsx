@@ -1,7 +1,7 @@
 import { MockPersonType } from "@/lib/mock-data";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import PersonBalance from "./PersonBalance";
+import ManageBillDrawer from "./ManageBillDrawer";
 
 interface Props {
 	person: MockPersonType;
@@ -10,7 +10,7 @@ export default function CardPerson({ person }: Props) {
 	return (
 		<div
 			aria-label="person-card"
-			className="w-full p-4 flex gap-3 items-center cursor-pointer"
+			className="w-full p-4 flex gap-4 items-center"
 		>
 			<Avatar aria-label="avatar" className="w-[50px] h-[50px]">
 				<AvatarImage src={person.image} alt={person.name} />
@@ -22,9 +22,7 @@ export default function CardPerson({ person }: Props) {
 				<h2 className="font-semibold">{person.name}</h2>
 				<PersonBalance person={person} />
 			</div>
-			<Button variant="outline" size="sm" className="w-3/12">
-				Select
-			</Button>
+			<ManageBillDrawer person={person} />
 		</div>
 	);
 }

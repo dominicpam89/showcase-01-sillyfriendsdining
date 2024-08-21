@@ -7,7 +7,7 @@ import {
 	CardTitle,
 } from "@/components/ui/card-main";
 import { PropsWithChildren } from "react";
-import CardDialog from "./CardDialog";
+import CardDialog from "./AddFriendDialog";
 
 export default function CardContainer({ children }: PropsWithChildren) {
 	return (

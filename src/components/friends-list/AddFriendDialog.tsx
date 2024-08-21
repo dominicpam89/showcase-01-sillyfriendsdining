@@ -7,9 +7,9 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import FormAddFriend from "./FormAddFriend";
+import FormAddFriend from "../forms/FormAddFriend";
 
-export default function CardDialog() {
+export default function AddFriendDialog() {
 	return (
 		<Dialog>
 			<Button asChild>
