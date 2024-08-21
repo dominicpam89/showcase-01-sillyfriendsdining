@@ -1,6 +1,5 @@
 import {
 	Drawer,
-	DrawerClose,
 	DrawerContent,
 	DrawerDescription,
 	DrawerFooter,
@@ -29,16 +28,7 @@ export default function ManageBillDrawer({ person }: Props) {
 					</DrawerDescription>
 				</DrawerHeader>
 				<FormBill person={person} />
-				<DrawerFooter>
-					<Button asChild variant="outline">
-						<DrawerClose type="button" className="w-full">
-							Cancel
-						</DrawerClose>
-					</Button>
-					<Button type="submit" className="w-full">
-						Split Bill
-					</Button>
-				</DrawerFooter>
+				<DrawerFooter></DrawerFooter>
 			</DrawerContent>
 		</Drawer>
 	);

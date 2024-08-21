@@ -7,6 +7,14 @@ import {
 import InputGroup from "../common/InputGroup";
 import { MockPersonType } from "@/lib/mock-data";
 import InputSelectGroup from "../common/InputSelectGroup";
+import { SubmitHandler, useForm, FormProvider } from "react-hook-form";
+import {
+	FormBillSchemaType,
+	formBillSchema,
+} from "@/lib/definition/form-bill.definition";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "@/components/ui/button";
+import { DrawerClose } from "../ui/drawer-main";
 
 const iconClass = "w-full h-full";
 
@@ -14,28 +22,63 @@ interface Props {
 	person: MockPersonType;
 }
 export default function FormBill({ person }: Props) {
+	const methods = useForm<FormBillSchemaType>({
+		mode: "onBlur",
+		reValidateMode: "onChange",
+		resolver: zodResolver(formBillSchema),
+		defaultValues: {
+			bill: "100" as any,
+			expense: "10" as any,
+			friendExpense: "50" as any,
+			selectPerson: "",
+		},
+	});
+	const onValid: SubmitHandler<FormBillSchemaType> = (data) => {
+		console.log(data);
+	};
 	return (
-		<form aria-label="form-bill" className="flex flex-col gap-4">
-			{/* <InputGroup
-				icon={<BillIcon className={iconClass} />}
-				placeholder="Total Bill"
-				inputType="number"
-			/>
-			<InputGroup
-				icon={<ExpenseIcon className={iconClass} />}
-				placeholder="Your Expense"
-				inputType="number"
-			/>
-			<InputGroup
-				icon={<FriendExpense className={iconClass} />}
-				placeholder={`${person.name} expense`}
-				inputType="number"
-			/>
-			<InputSelectGroup
-				person={person}
-				icon={<WhoIcon className={iconClass} />}
-				placeholder="Who is paying the bill?"
-			/> */}
-		</form>
+		<FormProvider {...methods}>
+			<form
+				aria-label="form-bill"
+				className="flex flex-col gap-4"
+				onSubmit={methods.handleSubmit(onValid)}
+			>
+				<InputGroup<FormBillSchemaType>
+					icon={<BillIcon className={iconClass} />}
+					placeholder="Total Bill"
+					inputType="number"
+					name="bill"
+				/>
+				<InputGroup<FormBillSchemaType>
+					icon={<ExpenseIcon className={iconClass} />}
+					placeholder="Your Expense"
+					inputType="number"
+					name="expense"
+				/>
+				<InputGroup<FormBillSchemaType>
+					icon={<FriendExpense className={iconClass} />}
+					placeholder={`${person.name} expense`}
+					inputType="number"
+					name="friendExpense"
+				/>
+				<InputSelectGroup<FormBillSchemaType>
+					person={person}
+					icon={<WhoIcon className="size-4" />}
+					placeholder="Who is paying the bill?"
+					name="selectPerson"
+					control={methods.control}
+				/>
+				<div className="mt-6 flex gap-2">
+					<Button asChild variant="outline">
+						<DrawerClose type="button" className="w-full">
+							Cancel
+						</DrawerClose>
+					</Button>
+					<Button className="w-full" type="submit">
+						Split the Bill
+					</Button>
+				</div>
+			</form>
+		</FormProvider>
 	);
 }

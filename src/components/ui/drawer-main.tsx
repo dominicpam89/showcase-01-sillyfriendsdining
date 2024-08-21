@@ -73,7 +73,7 @@ const DrawerFooter = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
 	<div
 		aria-label="drawer-footer"
-		className={cn("mt-auto flex gap-2 p-4", className)}
+		className={cn("mt-auto", className)}
 		{...props}
 	/>
 );

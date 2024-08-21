@@ -13,7 +13,7 @@ interface InputGroupProps<T extends FieldValues> {
 	placeholder: string;
 	inputType?: HTMLInputTypeAttribute;
 	name: Path<T>;
-	rules: RegisterOptions<T, Path<T>>;
+	rules?: RegisterOptions<T, Path<T>>;
 }
 
 export default function InputGroup<T extends FieldValues>({

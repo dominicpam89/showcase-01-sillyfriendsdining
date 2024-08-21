@@ -7,25 +7,51 @@ import {
 } from "@/components/ui/select";
 import { MockPersonType } from "@/lib/mock-data";
 import React from "react";
+import { Control, FieldValues, Path } from "react-hook-form";
+import { FormControl, FormField, FormItem, FormMessage } from "../ui/form";
 
-interface Props {
+interface Props<T extends FieldValues> {
 	person: MockPersonType;
 	placeholder: string;
 	icon: React.ReactNode;
+	name: Path<T>;
+	control: Control<T>;
 }
-export default function InputSelectGroup({ person, placeholder, icon }: Props) {
+export default function InputSelectGroup<T extends FieldValues>({
+	person,
+	placeholder,
+	icon,
+	name,
+	control,
+}: Props<T>) {
 	return (
-		<Select>
-			<div className="w-full flex gap-2 items-center">
-				<span className="size-4">{icon}</span>
-				<SelectTrigger className="w-full">
-					<SelectValue placeholder={placeholder} />
-				</SelectTrigger>
-			</div>
-			<SelectContent>
-				<SelectItem value="you">You</SelectItem>
-				<SelectItem value={person.id.toString()}>{person.name}</SelectItem>
-			</SelectContent>
-		</Select>
+		<FormField
+			control={control}
+			name={name}
+			render={({ field }) => (
+				<FormItem className="w-full">
+					<div className="flex gap-2">
+						<span className="mt-2">{icon}</span>
+						<Select
+							onValueChange={field.onChange}
+							defaultValue={field.value}
+						>
+							<FormControl>
+								<SelectTrigger>
+									<SelectValue placeholder={placeholder} />
+								</SelectTrigger>
+							</FormControl>
+							<SelectContent>
+								<SelectItem value="you">You</SelectItem>
+								<SelectItem value={person.id.toString()}>
+									{person.name}
+								</SelectItem>
+							</SelectContent>
+						</Select>
+					</div>
+					<FormMessage />
+				</FormItem>
+			)}
+		/>
 	);
 }
