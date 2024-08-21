@@ -6,13 +6,10 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card-main";
-import { Button } from "@/components/ui/button";
-import { PropsWithChildren, useContext } from "react";
-import { ContextFriendsList } from "@/lib/context/friend-list.context";
+import { PropsWithChildren } from "react";
+import CardDialog from "./CardDialog";
 
 export default function CardContainer({ children }: PropsWithChildren) {
-	const { toggleViewForm, viewFormAddFriend } = useContext(ContextFriendsList);
-
 	return (
 		<Card>
 			<CardHeader>
@@ -21,14 +18,7 @@ export default function CardContainer({ children }: PropsWithChildren) {
 			</CardHeader>
 			<CardContent>{children}</CardContent>
 			<CardFooter>
-				<Button
-					className="transition-default"
-					onClick={toggleViewForm}
-					size="sm"
-					variant={viewFormAddFriend ? "outline" : "default"}
-				>
-					{viewFormAddFriend ? "Cancel" : "Add Friend"}
-				</Button>
+				<CardDialog />
 			</CardFooter>
 		</Card>
 	);
