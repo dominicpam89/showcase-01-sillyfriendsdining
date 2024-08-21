@@ -8,21 +8,29 @@ import InputGroup from "../common/InputGroup";
 import { MockPersonType } from "@/lib/mock-data";
 import InputSelectGroup from "../common/InputSelectGroup";
 
+const iconClass = "w-full h-full";
+
 interface Props {
 	person: MockPersonType;
 }
 export default function FormBill({ person }: Props) {
 	return (
-		<form aria-label="form-bill">
-			<InputGroup icon={<BillIcon />} placeholder="Total Bill" />
-			<InputGroup icon={<ExpenseIcon />} placeholder="Your Expense" />
+		<form aria-label="form-bill" className="flex flex-col gap-4">
 			<InputGroup
-				icon={<FriendExpense />}
+				icon={<BillIcon className={iconClass} />}
+				placeholder="Total Bill"
+			/>
+			<InputGroup
+				icon={<ExpenseIcon className={iconClass} />}
+				placeholder="Your Expense"
+			/>
+			<InputGroup
+				icon={<FriendExpense className={iconClass} />}
 				placeholder={`${person.name} expense`}
 			/>
 			<InputSelectGroup
 				person={person}
-				icon={<WhoIcon />}
+				icon={<WhoIcon className={iconClass} />}
 				placeholder="Who is paying the bill?"
 			/>
 		</form>

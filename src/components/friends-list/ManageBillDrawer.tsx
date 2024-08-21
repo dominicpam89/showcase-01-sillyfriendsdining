@@ -7,7 +7,7 @@ import {
 	DrawerHeader,
 	DrawerTitle,
 	DrawerTrigger,
-} from "@/components/ui/drawer";
+} from "@/components/ui/drawer-main";
 import { Button } from "@/components/ui/button";
 import { MockPersonType } from "@/lib/mock-data";
 import FormBill from "../forms/FormBill";
@@ -25,15 +25,19 @@ export default function ManageBillDrawer({ person }: Props) {
 				<DrawerHeader>
 					<DrawerTitle>Manage Bill with {person.name}</DrawerTitle>
 					<DrawerDescription>
-						This action cannot be undone.
+						Please be playful with your friend
 					</DrawerDescription>
 				</DrawerHeader>
 				<FormBill person={person} />
 				<DrawerFooter>
-					<Button>Submit</Button>
-					<DrawerClose>
-						<Button variant="outline">Cancel</Button>
-					</DrawerClose>
+					<Button asChild variant="outline">
+						<DrawerClose type="button" className="w-full">
+							Cancel
+						</DrawerClose>
+					</Button>
+					<Button type="submit" className="w-full">
+						Submit
+					</Button>
 				</DrawerFooter>
 			</DrawerContent>
 		</Drawer>

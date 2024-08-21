@@ -16,10 +16,12 @@ interface Props {
 export default function InputSelectGroup({ person, placeholder, icon }: Props) {
 	return (
 		<Select>
-			<span className="size-4">{icon}</span>
-			<SelectTrigger className="w-full">
-				<SelectValue placeholder={placeholder} />
-			</SelectTrigger>
+			<div className="w-full flex gap-2 items-center">
+				<span className="size-4">{icon}</span>
+				<SelectTrigger className="w-full">
+					<SelectValue placeholder={placeholder} />
+				</SelectTrigger>
+			</div>
 			<SelectContent>
 				<SelectItem value="you">You</SelectItem>
 				<SelectItem value={person.id.toString()}>{person.name}</SelectItem>

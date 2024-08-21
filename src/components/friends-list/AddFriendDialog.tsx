@@ -15,7 +15,10 @@ export default function AddFriendDialog() {
 			<Button asChild>
 				<DialogTrigger>Add Friend</DialogTrigger>
 			</Button>
-			<DialogContent className="p-16 space-y-2">
+			<DialogContent
+				aria-label="add-friend-dialog-content"
+				className="p-6 md:p-16 space-y-2"
+			>
 				<DialogHeader>
 					<DialogTitle>Add Friend</DialogTitle>
 					<DialogDescription>
