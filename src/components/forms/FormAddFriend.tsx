@@ -53,7 +53,7 @@ export default function FormAddFriend() {
 						},
 					}}
 				/>
-				<FormButtons<SchemaT> />
+				<FormButtons<SchemaT> submitText="Add Friend" />
 			</form>
 		</FormProvider>
 	);

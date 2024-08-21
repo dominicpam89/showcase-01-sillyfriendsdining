@@ -82,7 +82,7 @@ export default function FormRegister({ switchTab }: Props) {
 					inputType="password"
 					placeholder="Confirmation Password"
 				/>
-				<FormButtons<SchemaT> />
+				<FormButtons<SchemaT> submitText="Let's Go!" />
 			</FormContainer>
 		</FormProvider>
 	);

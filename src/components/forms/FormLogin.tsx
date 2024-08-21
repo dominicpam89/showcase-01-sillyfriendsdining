@@ -59,7 +59,7 @@ export default function FormLogin({ switchTab }: Props) {
 					inputType="password"
 					placeholder="Your Password"
 				/>
-				<FormButtons<SchemaT> />
+				<FormButtons<SchemaT> submitText="Let's Go!" />
 			</FormContainer>
 		</FormProvider>
 	);
