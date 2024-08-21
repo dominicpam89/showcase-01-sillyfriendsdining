@@ -6,13 +6,13 @@ interface Props {
 export default function PersonBalance({ person }: Props) {
 	if (person.balance < 0) {
 		return (
-			<p className="text-sm text-destructive">
+			<p className="text-sm text-primary font-medium">
 				You owe {person.name} for ${person.balance}
 			</p>
 		);
 	} else if (person.balance > 0) {
 		return (
-			<p className="text-sm text-success">
+			<p className="text-sm text-success font-medium">
 				{person.name} owes you ${person.balance}
 			</p>
 		);

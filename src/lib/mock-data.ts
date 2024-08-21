@@ -9,7 +9,7 @@ export const mockpeople = [
 		id: 21097,
 		name: "George DC",
 		image: "https://i.pravatar.cc/150?img=2",
-		balance: 20,
+		balance: 0,
 	},
 	{
 		id: 76931,
