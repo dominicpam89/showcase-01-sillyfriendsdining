@@ -39,7 +39,7 @@ const CardTitle = React.forwardRef<
 		aria-label="card-title"
 		ref={ref}
 		className={cn(
-			"text-xl font-extrabold leading-none tracking-tight",
+			"text-2xl uppercase text-center font-extrabold leading-none tracking-tight",
 			className
 		)}
 		{...props}
