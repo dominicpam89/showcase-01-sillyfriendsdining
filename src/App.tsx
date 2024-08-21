@@ -1,11 +1,11 @@
-import { Button } from "@/components/ui/button";
+import AppContainer from "./components/AppContainer";
+import FriendsList from "./components/FriendsList";
 
 const App = () => {
 	return (
-		<>
-			<p className="text-5xl font-extrabold">Test Tailwind</p>
-			<Button variant="default">Test shadcn component</Button>
-		</>
+		<AppContainer>
+			<FriendsList />
+		</AppContainer>
 	);
 };
 
