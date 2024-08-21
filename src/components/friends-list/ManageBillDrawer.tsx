@@ -17,7 +17,7 @@ interface Props {
 export default function ManageBillDrawer({ person }: Props) {
 	return (
 		<Drawer>
-			<Button asChild variant="outline" className="w-full md:w-3/12">
+			<Button asChild variant="outline" className="w-full">
 				<DrawerTrigger>Select</DrawerTrigger>
 			</Button>
 			<DrawerContent>
