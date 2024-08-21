@@ -80,7 +80,7 @@ const CardFooter = React.forwardRef<
 	<div
 		aria-label="card-footer"
 		ref={ref}
-		className={cn("flex items-center justify-end p-6 pt-0", className)}
+		className={cn("flex flex-col gap-4 justify-center p-6 pt-0", className)}
 		{...props}
 	/>
 ));

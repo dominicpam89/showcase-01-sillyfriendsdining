@@ -81,3 +81,9 @@
     @apply bg-background text-foreground font-sans;
   }
 }
+
+@layer utilities{
+  .transition-default{
+    @apply transition-all duration-200 ease-in-out;
+  }
+}
