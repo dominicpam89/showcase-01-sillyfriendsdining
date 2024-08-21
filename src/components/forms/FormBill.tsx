@@ -40,7 +40,7 @@ export default function FormBill({ person }: Props) {
 		<FormProvider {...methods}>
 			<form
 				aria-label="form-bill"
-				className="flex flex-col gap-4"
+				className="flex flex-col gap-4 w-full max-w-xl mx-auto"
 				onSubmit={methods.handleSubmit(onValid)}
 			>
 				<InputGroup<FormBillSchemaType>
