@@ -18,7 +18,7 @@ export default function ManageBillDrawer({ person }: Props) {
 	return (
 		<Drawer>
 			<Button asChild variant="outline" className="w-full">
-				<DrawerTrigger>Select</DrawerTrigger>
+				<DrawerTrigger>Update</DrawerTrigger>
 			</Button>
 			<DrawerContent>
 				<DrawerHeader>

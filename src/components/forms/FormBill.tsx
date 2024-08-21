@@ -48,18 +48,21 @@ export default function FormBill({ person }: Props) {
 					placeholder="Total Bill"
 					inputType="number"
 					name="bill"
+					label="Total Bill"
 				/>
 				<InputGroup<FormBillSchemaType>
 					icon={<ExpenseIcon className={iconClass} />}
 					placeholder="Your Expense"
 					inputType="number"
 					name="expense"
+					label="Your Expense"
 				/>
 				<InputGroup<FormBillSchemaType>
 					icon={<FriendExpense className={iconClass} />}
 					placeholder={`${person.name} expense`}
 					inputType="number"
 					name="friendExpense"
+					label={`${person.name}'s expense`}
 				/>
 				<InputSelectGroup<FormBillSchemaType>
 					person={person}

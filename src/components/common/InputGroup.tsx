@@ -7,6 +7,7 @@ import {
 	RegisterOptions,
 	useFormContext,
 } from "react-hook-form";
+import { Label } from "@/components/ui/label";
 
 interface InputGroupProps<T extends FieldValues> {
 	icon: React.ReactNode;
@@ -14,6 +15,7 @@ interface InputGroupProps<T extends FieldValues> {
 	inputType?: HTMLInputTypeAttribute;
 	name: Path<T>;
 	rules?: RegisterOptions<T, Path<T>>;
+	label?: string;
 }
 
 export default function InputGroup<T extends FieldValues>({
@@ -22,6 +24,7 @@ export default function InputGroup<T extends FieldValues>({
 	inputType = "text",
 	name,
 	rules,
+	label,
 }: InputGroupProps<T>) {
 	const {
 		register,
@@ -30,9 +33,15 @@ export default function InputGroup<T extends FieldValues>({
 
 	return (
 		<div aria-label="input-group" className="flex flex-col gap-2">
+			{label && (
+				<Label htmlFor={name} className="text-gray-500">
+					{label}
+				</Label>
+			)}
 			<div className="w-full flex gap-2 items-center">
 				<span className="size-4">{icon}</span>
 				<Input
+					id={name}
 					type={inputType}
 					placeholder={placeholder}
 					{...register(name, rules)}
