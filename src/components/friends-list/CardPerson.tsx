@@ -7,7 +7,10 @@ interface Props {
 }
 export default function CardPerson({ person }: Props) {
 	return (
-		<div aria-label="person-card" className="p-4 flex gap-3 items-center">
+		<div
+			aria-label="person-card"
+			className="p-4 flex gap-3 items-center cursor-pointer"
+		>
 			<Avatar aria-label="avatar" className="w-[50px] h-[50px]">
 				<AvatarImage src={person.image} alt={person.name} />
 				<AvatarFallback aria-label="fallback">

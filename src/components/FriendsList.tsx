@@ -1,8 +1,8 @@
 import { mockpeople } from "@/lib/mock-data";
-import CardContainer from "./FriendsList/CardContainer";
-import CardPerson from "./FriendsList/CardPerson";
+import CardContainer from "./friends-list/CardContainer";
+import CardPerson from "./friends-list/CardPerson";
 
-export default function PeopleList() {
+export default function FriendsList() {
 	return (
 		<CardContainer>
 			{mockpeople.map((person) => (

@@ -7,13 +7,11 @@ import {
 	CardTitle,
 } from "@/components/ui/card-main";
 import { Button } from "@/components/ui/button";
-import { PropsWithChildren, useState } from "react";
-import FormAddFriend from "./FormAddFriend";
+import { PropsWithChildren, useContext } from "react";
+import { ContextFriendsList } from "@/lib/context/friend-list.context";
 
 export default function CardContainer({ children }: PropsWithChildren) {
-	// form handle
-	const [viewFormAddFriend, setViewFormAddFriend] = useState(false);
-	const toggleViewForm = () => setViewFormAddFriend((ps) => !ps);
+	const { toggleViewForm, viewFormAddFriend } = useContext(ContextFriendsList);
 
 	return (
 		<Card>
@@ -31,7 +29,6 @@ export default function CardContainer({ children }: PropsWithChildren) {
 				>
 					{viewFormAddFriend ? "Cancel" : "Add Friend"}
 				</Button>
-				{viewFormAddFriend && <FormAddFriend />}
 			</CardFooter>
 		</Card>
 	);
