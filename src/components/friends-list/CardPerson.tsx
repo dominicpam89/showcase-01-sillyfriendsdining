@@ -10,7 +10,7 @@ export default function CardPerson({ person }: Props) {
 	return (
 		<div
 			aria-label="person-card"
-			className="w-full p-4 flex gap-4 items-center"
+			className="w-full p-4 flex flex-col gap-2 md:flex-row md:gap-4 items-center"
 		>
 			<Avatar aria-label="avatar" className="w-[50px] h-[50px]">
 				<AvatarImage src={person.image} alt={person.name} />
@@ -18,7 +18,7 @@ export default function CardPerson({ person }: Props) {
 					{person.name[0].toUpperCase()}
 				</AvatarFallback>
 			</Avatar>
-			<div aria-label="info" className="w-full">
+			<div aria-label="info" className="w-full text-center md:text-left">
 				<h2 className="font-semibold">{person.name}</h2>
 				<PersonBalance person={person} />
 			</div>

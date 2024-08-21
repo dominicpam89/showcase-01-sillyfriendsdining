@@ -18,7 +18,7 @@ interface Props {
 export default function ManageBillDrawer({ person }: Props) {
 	return (
 		<Drawer>
-			<Button asChild variant="outline" className="w-3/12">
+			<Button asChild variant="outline" className="w-full md:w-3/12">
 				<DrawerTrigger>Select</DrawerTrigger>
 			</Button>
 			<DrawerContent>
@@ -36,7 +36,7 @@ export default function ManageBillDrawer({ person }: Props) {
 						</DrawerClose>
 					</Button>
 					<Button type="submit" className="w-full">
-						Submit
+						Split Bill
 					</Button>
 				</DrawerFooter>
 			</DrawerContent>

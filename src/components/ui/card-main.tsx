@@ -67,7 +67,7 @@ const CardContent = React.forwardRef<
 	<div
 		aria-label="card-content"
 		ref={ref}
-		className={cn("p-6 pt-0 flex flex-col", className)}
+		className={cn("p-6 pt-0 flex flex-col gap-4", className)}
 		{...props}
 	/>
 ));
