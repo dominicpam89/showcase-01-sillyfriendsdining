@@ -1,13 +1,13 @@
 import { FriendType } from "@/lib/definition/friends-list.type";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import PersonBalance from "./PersonBalance";
+import PersonBalance from "./FriendBalance";
 import ManageBillDrawer from "./ManageBillDrawer";
 import RemovePersonDialog from "./RemovePersonDialog";
 
 interface Props {
 	person: FriendType;
 }
-export default function CardPerson({ person }: Props) {
+export default function Friend({ person }: Props) {
 	return (
 		<div
 			aria-label="person-card"

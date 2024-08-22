@@ -7,9 +7,9 @@ import {
 	CardTitle,
 } from "@/components/ui/card-main";
 import { PropsWithChildren } from "react";
-import CardDialog from "./AddFriendDialog";
+import AddFriendDialog from "./AddFriendDialog";
 
-export default function CardContainer({ children }: PropsWithChildren) {
+export default function FriendListContainer({ children }: PropsWithChildren) {
 	return (
 		<Card>
 			<CardHeader>
@@ -18,7 +18,7 @@ export default function CardContainer({ children }: PropsWithChildren) {
 			</CardHeader>
 			<CardContent>{children}</CardContent>
 			<CardFooter>
-				<CardDialog />
+				<AddFriendDialog />
 			</CardFooter>
 		</Card>
 	);

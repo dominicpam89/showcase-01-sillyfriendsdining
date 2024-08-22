@@ -1,5 +1,5 @@
-import CardContainer from "./friends-list/CardContainer";
-import CardPerson from "./friends-list/CardPerson";
+import FriendListContainer from "./friends-list/FriendListContainer";
+import Friend from "./friends-list/Friend";
 import { useQuery } from "@tanstack/react-query";
 import {
 	getFriends,
@@ -26,17 +26,17 @@ export default function FriendsList() {
 	if (isError) return <ErrorUI message={error.message} data={error.data} />;
 	if (data?.data?.length == 0)
 		return (
-			<CardContainer>
+			<FriendListContainer>
 				<h2 className="text-justify">
 					Oh my, you don't have friends, even just one? Pathetic!
 				</h2>
-			</CardContainer>
+			</FriendListContainer>
 		);
 	return (
-		<CardContainer>
+		<FriendListContainer>
 			{data?.data?.map((person) => (
-				<CardPerson key={person.id} person={person} />
+				<Friend key={person.id} person={person} />
 			))}
-		</CardContainer>
+		</FriendListContainer>
 	);
 }

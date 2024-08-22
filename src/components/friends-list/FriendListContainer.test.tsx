@@ -1,9 +1,9 @@
-import CardContainer from "./CardContainer";
+import FriendListContainer from "./FriendListContainer";
 import { it, expect, beforeEach } from "vitest";
 import { screen, render, within } from "@testing-library/react";
 
 beforeEach(() => {
-	render(<CardContainer />);
+	render(<FriendListContainer />);
 });
 
 it("renders the component with all necessary elements", () => {

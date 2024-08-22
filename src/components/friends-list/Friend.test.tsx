@@ -1,4 +1,4 @@
-import CardPerson from "./CardPerson";
+import Friend from "./Friend";
 import { it, expect } from "vitest";
 import { screen, render, within } from "@testing-library/react";
 import { FriendType } from "@/lib/definition/friends-list.type";
@@ -12,7 +12,7 @@ const mockPerson: FriendType = {
 };
 
 it("renders the person's card with the correct information", () => {
-	render(<CardPerson person={mockPerson} />);
+	render(<Friend person={mockPerson} />);
 
 	// Selection of elements
 	const personCard = screen.getByLabelText("person-card");
@@ -30,7 +30,7 @@ it("renders the person's card with the correct information", () => {
 });
 
 it("displays the correct name and balance", () => {
-	render(<CardPerson person={mockPerson} />);
+	render(<Friend person={mockPerson} />);
 
 	// Check the name and balance text content
 	const infoHeading = screen.getByRole("heading", { name: mockPerson.name });
@@ -46,7 +46,7 @@ it("handles negative balance correctly", () => {
 		balance: -500,
 	};
 
-	render(<CardPerson person={mockPersonWithNegativeBalance} />);
+	render(<Friend person={mockPersonWithNegativeBalance} />);
 
 	const infoBalance = screen.getByLabelText("balance");
 	expect(infoBalance).toHaveTextContent(/owe/i);
@@ -58,7 +58,7 @@ it("handles zero balance correctly", () => {
 		balance: 0,
 	};
 
-	render(<CardPerson person={mockPersonWithZeroBalance} />);
+	render(<Friend person={mockPersonWithZeroBalance} />);
 
 	const infoBalance = screen.getByLabelText("balance");
 	expect(infoBalance).toHaveTextContent(/even/i);
@@ -70,7 +70,7 @@ it("handles positive balance correctly", () => {
 		balance: 500,
 	};
 
-	render(<CardPerson person={mockPersonWithZeroBalance} />);
+	render(<Friend person={mockPersonWithZeroBalance} />);
 
 	const infoBalance = screen.getByLabelText("balance");
 	expect(infoBalance).toHaveTextContent(/owes/i);
