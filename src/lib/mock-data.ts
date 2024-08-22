@@ -1,4 +1,11 @@
-export const mockpeople = [
+export type FriendType = {
+	id: number;
+	name: string;
+	image: string;
+	balance: number;
+};
+
+export const mockpeople: FriendType[] = [
 	{
 		id: 1,
 		name: "Sarah Buldozer",
@@ -24,5 +31,3 @@ export const mockpeople = [
 		balance: 5,
 	},
 ];
-
-export type FriendType = (typeof mockpeople)[0];
