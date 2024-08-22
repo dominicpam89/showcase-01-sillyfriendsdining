@@ -73,7 +73,7 @@ export async function getFriend(friendId: string) {
 	} catch (error) {
 		const err = new Error("Error fetching single document with given id");
 		console.error("Error fetching document: ", error);
-		return {
+		throw {
 			error: true,
 			name: "get one friend by id",
 			message: "failed to get one friend by id",
@@ -117,14 +117,18 @@ export async function createFriend({
 }
 
 // UPDATE
-export async function updateFriend(
-	friendId: string,
-	name: string,
-	imageFile?: File
-) {
+export async function updateFriend({
+	friendId,
+	balance,
+	imageFile,
+}: {
+	friendId: string;
+	balance: number;
+	imageFile?: File;
+}) {
 	try {
 		const friendDocRef = doc(db, COLLECTION_NAME, friendId);
-		const updatedData: Partial<FriendType> = { name };
+		const updatedData: Partial<FriendType> = { balance };
 
 		if (imageFile) {
 			const imageRef = ref(
@@ -140,7 +144,7 @@ export async function updateFriend(
 		return {
 			error: false,
 			name: "update friend",
-			message: "successfully updated friend data",
+			message: "successfully updated",
 			data: null,
 		} satisfies QueryResponseType<null>;
 	} catch (error) {
@@ -148,7 +152,7 @@ export async function updateFriend(
 		return {
 			error: true,
 			name: "error on update friend",
-			message: "failed to update friend data",
+			message: "failed to update",
 			data: error as FirestoreError,
 		} satisfies QueryResponseType<FirestoreError>;
 	}

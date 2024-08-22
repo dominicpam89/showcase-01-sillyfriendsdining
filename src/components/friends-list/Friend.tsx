@@ -1,6 +1,6 @@
 import { FriendType } from "@/lib/definition/friends-list.type";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import PersonBalance from "./FriendBalance";
+import FriendBalance from "./FriendBalance";
 import ManageBillDrawer from "./ManageBillDrawer";
 import RemovePersonDialog from "./RemovePersonDialog";
 
@@ -22,7 +22,7 @@ export default function Friend({ person }: Props) {
 			</Avatar>
 			<div aria-label="info" className="w-full text-center md:text-left">
 				<h2 className="font-semibold">{person.name}</h2>
-				<PersonBalance person={person} />
+				<FriendBalance person={person} />
 			</div>
 			<div aria-label="action" className="w-4/12 flex gap-2 items-center">
 				<ManageBillDrawer person={person} />

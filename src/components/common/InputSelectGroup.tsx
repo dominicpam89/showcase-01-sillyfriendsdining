@@ -8,7 +8,13 @@ import {
 import { FriendType } from "@/lib/definition/friends-list.type";
 import React from "react";
 import { Control, FieldValues, Path } from "react-hook-form";
-import { FormControl, FormField, FormItem, FormMessage } from "../ui/form";
+import {
+	FormControl,
+	FormField,
+	FormItem,
+	FormMessage,
+} from "@/components/ui/form";
+import { Label } from "@/components/ui/label";
 
 interface Props<T extends FieldValues> {
 	person: FriendType;
@@ -16,6 +22,7 @@ interface Props<T extends FieldValues> {
 	icon: React.ReactNode;
 	name: Path<T>;
 	control: Control<T>;
+	label: string;
 	disabled?: boolean;
 }
 export default function InputSelectGroup<T extends FieldValues>({
@@ -24,6 +31,7 @@ export default function InputSelectGroup<T extends FieldValues>({
 	icon,
 	name,
 	control,
+	label,
 	disabled = false,
 }: Props<T>) {
 	return (
@@ -32,8 +40,9 @@ export default function InputSelectGroup<T extends FieldValues>({
 			name={name}
 			render={({ field }) => (
 				<FormItem className="w-full">
+					<Label htmlFor={name}>{label}</Label>
 					<div className="flex gap-2">
-						<span className="mt-2">{icon}</span>
+						<span className="mt-3">{icon}</span>
 						<Select
 							onValueChange={field.onChange}
 							defaultValue={field.value}
@@ -41,7 +50,7 @@ export default function InputSelectGroup<T extends FieldValues>({
 						>
 							<FormControl>
 								<SelectTrigger>
-									<SelectValue placeholder={placeholder} />
+									<SelectValue id={name} placeholder={placeholder} />
 								</SelectTrigger>
 							</FormControl>
 							<SelectContent>

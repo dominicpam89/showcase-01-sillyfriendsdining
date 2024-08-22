@@ -4,7 +4,7 @@ interface Props {
 	person: FriendType;
 }
 
-export default function PersonBalance({ person }: Props) {
+export default function FriendBalance({ person }: Props) {
 	let message;
 	let styleClass;
 
