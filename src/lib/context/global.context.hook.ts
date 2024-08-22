@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { auth } from "@/lib/firebase.config";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut, User } from "firebase/auth";
 import {
 	LoginSchemaType,
 	RegisterSchemaType,
@@ -9,7 +9,7 @@ import {
 } from "../definition/auth.definition";
 import { firebaseRegisterUser } from "../services/firebase-register";
 import { firebaseLogin } from "../services/firebase-login";
-import { UserState, AuthErrorType } from "./global.context.type";
+import { AuthenticatedUserType, AuthErrorType } from "./global.context.type";
 
 const initAuthError = {
 	additionalData: [],
@@ -17,17 +17,29 @@ const initAuthError = {
 	name: "",
 };
 
+const getUserInformation = (user: User) => {
+	return {
+		uid: user.uid,
+		email: user.email,
+		emailVerified: user.emailVerified,
+		displayName: user.displayName,
+		photoURL: user.photoURL,
+	} as AuthenticatedUserType;
+};
+
 const useContextGlobal = () => {
 	const [authLoading, setAuthLoading] = useState(false);
 	const [loggedIn, setLoggedIn] = useState(false);
-	const [currentUser, setCurrentUser] = useState<UserState>(null);
+	const [currentUser, setCurrentUser] = useState<AuthenticatedUserType | null>(
+		null
+	);
 	const [isError, setIsError] = useState(false);
 	const [authError, setAuthError] = useState<AuthErrorType>(initAuthError);
 
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (user) => {
 			if (user) {
-				setCurrentUser(user);
+				setCurrentUser(getUserInformation(user));
 				setLoggedIn(true);
 			} else {
 				setCurrentUser(null);

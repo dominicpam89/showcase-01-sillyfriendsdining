@@ -12,7 +12,7 @@ export default function SimpleNav() {
 			aria-label="navbar"
 			className="w-full p-8 px-12 flex justify-between items-center"
 		>
-			<h1 className="font-semibold">{currentUser?.email}</h1>
+			<h1 className="font-semibold">{currentUser?.displayName}</h1>
 			<nav className="flex gap-4">
 				<Button variant="link" onClick={handleLogout}>
 					Logout

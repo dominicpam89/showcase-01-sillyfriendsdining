@@ -1,10 +1,15 @@
-import { User } from "firebase/auth";
 import {
 	LoginSchemaType,
 	RegisterSchemaType,
 } from "../definition/auth.definition";
 
-export type UserState = null | User;
+export type AuthenticatedUserType = {
+	uid: string;
+	displayName: string;
+	email: string;
+	emailVerified: boolean;
+	photoURL: string | null;
+};
 
 export type AuthErrorType = {
 	name: string;
@@ -13,7 +18,7 @@ export type AuthErrorType = {
 };
 
 export type ContextState = {
-	currentUser: UserState;
+	currentUser: AuthenticatedUserType | null;
 	loggedIn: boolean;
 	registerUser(data: RegisterSchemaType): void;
 	loginUser(data: LoginSchemaType): void;
