@@ -10,7 +10,7 @@ import { ContextGlobal } from "@/lib/context/global.context";
 import FriendsListSkeleton from "./FriendsList.skeleton";
 import { FriendType } from "@/lib/definition/friends-list.type";
 import { FirestoreError } from "firebase/firestore";
-import ErrorUI from "./ErrorUI";
+import ErrorUI from "./common/ErrorUI";
 
 export default function FriendsList() {
 	const { currentUser } = useContext(ContextGlobal);

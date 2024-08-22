@@ -7,7 +7,11 @@ export default function AuthSelect() {
 	const [tab, setTab] = useState("login");
 	const onTabChange = (val: string) => setTab(val);
 	return (
-		<Tabs className="w-full max-w-lg" value={tab} onValueChange={onTabChange}>
+		<Tabs
+			className="w-full max-w-lg mt-12 md:mt-24"
+			value={tab}
+			onValueChange={onTabChange}
+		>
 			<TabsList className="w-full bg-info/80 text-info-foreground">
 				<TabsTrigger value="register" className="w-full">
 					Register
