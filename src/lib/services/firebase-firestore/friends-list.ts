@@ -83,7 +83,15 @@ export async function getFriend(friendId: string) {
 }
 
 // CREATE
-export async function createFriend(name: string, image: File, uid: string) {
+export async function createFriend({
+	name,
+	image,
+	uid,
+}: {
+	name: string;
+	image: File;
+	uid: string;
+}) {
 	try {
 		const imageRef = ref(storage, `/showcase-1/friends-list/${image.name}`);
 		await uploadBytes(imageRef, image);
@@ -97,6 +105,8 @@ export async function createFriend(name: string, image: File, uid: string) {
 		};
 
 		const docRef = await addDoc(cols, friendData);
+		const friendDoc = doc(db, COLLECTION_NAME, docRef.id);
+		await updateDoc(friendDoc, { id: docRef.id });
 		return {
 			error: false,
 			name: "create friend",

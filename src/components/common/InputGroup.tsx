@@ -18,6 +18,7 @@ interface InputGroupProps<T extends FieldValues> {
 	name: Path<T>;
 	rules?: RegisterOptions<T, Path<T>>;
 	label?: string;
+	disabled?: boolean;
 }
 
 export default function InputGroup<T extends FieldValues>({
@@ -27,6 +28,7 @@ export default function InputGroup<T extends FieldValues>({
 	name,
 	rules,
 	label,
+	disabled = false,
 }: InputGroupProps<T>) {
 	const {
 		register,
@@ -49,6 +51,7 @@ export default function InputGroup<T extends FieldValues>({
 						type={inputType}
 						placeholder={placeholder}
 						{...register(name, rules)}
+						disabled={disabled}
 					/>
 				)}
 				{inputType == "password" && (
@@ -57,6 +60,7 @@ export default function InputGroup<T extends FieldValues>({
 						type={showPass ? "text" : "password"}
 						placeholder={placeholder}
 						{...register(name, rules)}
+						disabled={disabled}
 					/>
 				)}
 				{inputType == "password" && (
@@ -65,6 +69,7 @@ export default function InputGroup<T extends FieldValues>({
 						variant="outline"
 						size="icon"
 						type="button"
+						disabled={disabled}
 					>
 						{showPass ? (
 							<EyeOffIcon className="size-5" />

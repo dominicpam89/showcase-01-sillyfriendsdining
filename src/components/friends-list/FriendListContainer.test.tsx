@@ -1,9 +1,9 @@
-import FriendListContainer from "./FriendListContainer";
+import FriendListWrapper from "./FriendListWrapper";
 import { it, expect, beforeEach } from "vitest";
 import { screen, render, within } from "@testing-library/react";
 
 beforeEach(() => {
-	render(<FriendListContainer />);
+	render(<FriendListWrapper />);
 });
 
 it("renders the component with all necessary elements", () => {

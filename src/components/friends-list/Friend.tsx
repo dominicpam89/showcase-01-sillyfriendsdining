@@ -11,6 +11,7 @@ export default function Friend({ person }: Props) {
 	return (
 		<div
 			aria-label="person-card"
+			id={person.id}
 			className="w-full p-4 flex flex-col gap-2 md:flex-row md:gap-4 items-center"
 		>
 			<Avatar aria-label="avatar" className="w-[50px] h-[50px]">

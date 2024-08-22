@@ -1,4 +1,4 @@
 export type FormAddFriendType = {
 	name: string;
-	image: File | undefined;
+	image: File;
 };

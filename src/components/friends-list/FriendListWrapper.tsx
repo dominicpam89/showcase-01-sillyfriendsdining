@@ -9,7 +9,7 @@ import {
 import { PropsWithChildren } from "react";
 import AddFriendDialog from "./AddFriendDialog";
 
-export default function FriendListContainer({ children }: PropsWithChildren) {
+export default function FriendListWrapper({ children }: PropsWithChildren) {
 	return (
 		<Card>
 			<CardHeader>

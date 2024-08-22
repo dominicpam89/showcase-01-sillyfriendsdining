@@ -23,6 +23,7 @@ interface Props<T extends FieldValues> {
 		| "ghost"
 		| null
 		| undefined;
+	disabled?: boolean;
 }
 export default function InputGroupFile<T extends FieldValues>({
 	icon,
@@ -30,6 +31,7 @@ export default function InputGroupFile<T extends FieldValues>({
 	name,
 	buttonText,
 	buttonVariant = "secondary",
+	disabled = false,
 }: Props<T>) {
 	const { formControl, nativeControl } = useImageUpload<T>(name);
 	const { register, errors, imageValue, onImageChange, trigger } = formControl;
@@ -49,6 +51,7 @@ export default function InputGroupFile<T extends FieldValues>({
 				onBlur={() => trigger(name)}
 				variant={buttonVariant}
 				type="button"
+				disabled={disabled}
 			>
 				<span className="size-4 mr-2">{icon}</span>
 				{imageValue ? imageValue.name : buttonText}

@@ -66,7 +66,10 @@ export default function FormLogin({ switchTab }: Props) {
 					inputType="password"
 					placeholder="Your Password"
 				/>
-				<FormButtons<SchemaT> submitText="Let's Go!" />
+				<FormButtons<SchemaT>
+					submitText="Let's Go!"
+					disabled={authLoading}
+				/>
 			</FormContainer>
 		</FormProvider>
 	);

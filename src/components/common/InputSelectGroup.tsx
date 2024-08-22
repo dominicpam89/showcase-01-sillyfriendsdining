@@ -16,6 +16,7 @@ interface Props<T extends FieldValues> {
 	icon: React.ReactNode;
 	name: Path<T>;
 	control: Control<T>;
+	disabled?: boolean;
 }
 export default function InputSelectGroup<T extends FieldValues>({
 	person,
@@ -23,6 +24,7 @@ export default function InputSelectGroup<T extends FieldValues>({
 	icon,
 	name,
 	control,
+	disabled = false,
 }: Props<T>) {
 	return (
 		<FormField
@@ -35,6 +37,7 @@ export default function InputSelectGroup<T extends FieldValues>({
 						<Select
 							onValueChange={field.onChange}
 							defaultValue={field.value}
+							disabled={disabled}
 						>
 							<FormControl>
 								<SelectTrigger>

@@ -1,4 +1,4 @@
-import FriendListContainer from "./friends-list/FriendListContainer";
+import FriendListWrapper from "./friends-list/FriendListWrapper";
 import Friend from "./friends-list/Friend";
 import { useQuery } from "@tanstack/react-query";
 import {
@@ -26,17 +26,17 @@ export default function FriendsList() {
 	if (isError) return <ErrorUI message={error.message} data={error.data} />;
 	if (data?.data?.length == 0)
 		return (
-			<FriendListContainer>
+			<FriendListWrapper>
 				<h2 className="text-justify">
 					Oh my, you don't have friends, even just one? Pathetic!
 				</h2>
-			</FriendListContainer>
+			</FriendListWrapper>
 		);
 	return (
-		<FriendListContainer>
+		<FriendListWrapper>
 			{data?.data?.map((person) => (
-				<Friend key={person.id} person={person} />
+				<Friend key={person.name + person.uid} person={person} />
 			))}
-		</FriendListContainer>
+		</FriendListWrapper>
 	);
 }
