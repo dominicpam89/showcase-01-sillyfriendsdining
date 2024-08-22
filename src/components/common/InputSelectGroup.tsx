@@ -5,7 +5,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
-import { FriendType } from "@/lib/mock-data";
+import { FriendType } from "@/lib/definition/friends-list.type";
 import React from "react";
 import { Control, FieldValues, Path } from "react-hook-form";
 import { FormControl, FormField, FormItem, FormMessage } from "../ui/form";

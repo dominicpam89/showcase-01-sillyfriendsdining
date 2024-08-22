@@ -1,4 +1,4 @@
-import { FriendType } from "@/lib/mock-data";
+import { FriendType } from "@/lib/definition/friends-list.type";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import PersonBalance from "./PersonBalance";
 import ManageBillDrawer from "./ManageBillDrawer";

@@ -8,7 +8,7 @@ import {
 	DrawerTrigger,
 } from "@/components/ui/drawer-main";
 import { Button } from "@/components/ui/button";
-import { FriendType } from "@/lib/mock-data";
+import { FriendType } from "@/lib/definition/friends-list.type.ts";
 import FormBill from "../forms/FormBill";
 
 interface Props {

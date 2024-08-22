@@ -5,7 +5,7 @@ import {
 	CircleUserIcon as WhoIcon,
 } from "lucide-react";
 import InputGroup from "../common/InputGroup";
-import { FriendType } from "@/lib/mock-data";
+import { FriendType } from "@/lib/definition/friends-list.type";
 import InputSelectGroup from "../common/InputSelectGroup";
 import { SubmitHandler, useForm, FormProvider } from "react-hook-form";
 import {

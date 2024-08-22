@@ -1,13 +1,14 @@
 import CardPerson from "./CardPerson";
 import { it, expect } from "vitest";
 import { screen, render, within } from "@testing-library/react";
-import { FriendType } from "@/lib/mock-data";
+import { FriendType } from "@/lib/definition/friends-list.type";
 
 const mockPerson: FriendType = {
 	id: 1,
 	name: "John Doe",
 	image: "https://example.com/avatar.jpg",
 	balance: 1000,
+	uid: "asdqwe123aqweasd",
 };
 
 it("renders the person's card with the correct information", () => {

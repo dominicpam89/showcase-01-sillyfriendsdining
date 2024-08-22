@@ -1,4 +1,4 @@
-import { FriendType } from "@/lib/mock-data";
+import { FriendType } from "@/lib/definition/friends-list.type.ts";
 
 interface Props {
 	person: FriendType;
