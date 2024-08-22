@@ -3,7 +3,7 @@ interface Props {
 }
 export default function AppContainer({ children }: Props) {
 	return (
-		<main className="p-4 flex flex-col w-full min-w-[320px] min-h-screen justify-center items-center overflow-scroll">
+		<main className="p-4 flex flex-col w-full min-w-[320px] min-h-screen items-center overflow-scroll">
 			{children}
 		</main>
 	);
