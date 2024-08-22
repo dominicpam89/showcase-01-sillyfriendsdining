@@ -43,7 +43,7 @@ export default function FormAddFriend() {
 						},
 					}}
 				/>
-				<InputImage
+				<InputImage<SchemaT>
 					icon={<FileImageIcon className={iconClass} />}
 					name="image"
 					rules={{
@@ -52,6 +52,7 @@ export default function FormAddFriend() {
 							message: "image is required",
 						},
 					}}
+					buttonText="Upload your friend's poker face"
 				/>
 				<FormButtons<SchemaT> submitText="Add Friend" />
 			</form>

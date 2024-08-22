@@ -1,17 +1,27 @@
 import { Input } from "@/components/ui/input";
-import { FormAddFriendType } from "@/lib/definition/form-add-friend.definition";
-import { Path, RegisterOptions } from "react-hook-form";
+import {
+	FieldError,
+	FieldValues,
+	Path,
+	RegisterOptions,
+} from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import InputImagePreview from "../forms/InputImagePreview";
 import { useImageUpload } from "@/lib/hooks/useImageUpload";
 
-interface Props {
+interface Props<T extends FieldValues> {
 	icon: React.ReactNode;
-	name: Path<FormAddFriendType>;
-	rules: RegisterOptions<FormAddFriendType, Path<FormAddFriendType>>;
+	name: Path<T>;
+	rules: RegisterOptions<T, Path<T>>;
+	buttonText: string;
 }
-export default function InputGroupFile({ icon, rules, name }: Props) {
-	const { formControl, nativeControl } = useImageUpload();
+export default function InputGroupFile<T extends FieldValues>({
+	icon,
+	rules,
+	name,
+	buttonText,
+}: Props<T>) {
+	const { formControl, nativeControl } = useImageUpload<T>(name);
 	const { register, errors, imageValue, onImageChange, trigger } = formControl;
 	const { displayImage, displayImageLoading, inputImageRef } = nativeControl;
 
@@ -31,14 +41,14 @@ export default function InputGroupFile({ icon, rules, name }: Props) {
 				type="button"
 			>
 				<span className="size-4 mr-2">{icon}</span>
-				{imageValue ? imageValue.name : "Upload your friend's poker face"}
+				{imageValue ? imageValue.name : buttonText}
 			</Button>
-			{errors.image && (
+			{errors[name] && (
 				<p
 					aria-label="input-error-message"
 					className="text-sm text-destructive text-center"
 				>
-					{errors.image.message}
+					{(errors[name] as FieldError).message}
 				</p>
 			)}
 			<InputImagePreview

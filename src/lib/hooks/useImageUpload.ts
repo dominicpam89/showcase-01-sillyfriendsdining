@@ -1,10 +1,9 @@
 import { useState, useRef, useEffect, ChangeEvent } from "react";
-import { useFormContext } from "react-hook-form";
-import { FormAddFriendType } from "@/lib/definition/form-add-friend.definition";
+import { FieldValues, Path, PathValue, useFormContext } from "react-hook-form";
 
 const MAX_FILE_SIZE = 1 * 1024 * 1024; // 5MB
 
-export function useImageUpload() {
+export function useImageUpload<T extends FieldValues>(name: Path<T>) {
 	const {
 		register,
 		setError,
@@ -14,7 +13,7 @@ export function useImageUpload() {
 		trigger,
 		watch,
 		formState: { errors },
-	} = useFormContext<FormAddFriendType>();
+	} = useFormContext<T>();
 	const inputImageRef = useRef<HTMLInputElement>(null);
 
 	// upload image state
@@ -24,14 +23,14 @@ export function useImageUpload() {
 	const [displayImageLoading, setDisplayImageLoading] = useState(false);
 	const validateImage = (target: File | undefined) => {
 		if (!target) {
-			setError("image", { message: "No file is selected", type: "custom" });
+			setError(name, { message: "No file is selected", type: "custom" });
 			return undefined;
 		}
 		if (
 			!["image/png", "image/jpeg", "image/jpg"].includes(target.type) ||
 			target.size > MAX_FILE_SIZE
 		) {
-			setError("image", {
+			setError(name, {
 				message:
 					target.size > MAX_FILE_SIZE
 						? "File size must be less than 5MB"
@@ -47,9 +46,9 @@ export function useImageUpload() {
 		fileReader.onloadstart = () => setDisplayImageLoading(true);
 		fileReader.onloadend = () => setDisplayImageLoading(false);
 		fileReader.onload = () => {
-			setValue("image", target);
+			setValue(name, target as PathValue<T, Path<T>>);
 			setDisplayImage(fileReader.result);
-			clearErrors("image");
+			clearErrors(name);
 		};
 		fileReader.readAsDataURL(target);
 	};
@@ -62,15 +61,15 @@ export function useImageUpload() {
 			handleFileRead(fileReader, validatedTarget);
 		} else {
 			setDisplayImage(null);
-			setValue("image", undefined);
+			setValue(name, undefined as unknown as PathValue<T, Path<T>>);
 		}
 	};
 
-	const imageValue = getValues("image");
+	const imageValue = getValues(name);
 
 	useEffect(() => {
 		const subscription = watch((value) => {
-			if ("image" === "image" && value.image) {
+			if (name === name && value.image) {
 				const fileReader = new FileReader();
 				fileReader.onload = () => setDisplayImage(fileReader.result);
 				fileReader.readAsDataURL(value.image);
