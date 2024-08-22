@@ -30,11 +30,11 @@ export const useManageBill = (personId: string) => {
 		},
 	});
 
-	const onUpdateFriend = (balance: number) => {
+	const onUpdateFriend = (balance: number, bill: number) => {
 		toast({
 			description: "your request is processed",
 		});
-		mutate({ friendId: personId, balance });
+		mutate({ friendId: personId, balance, bill });
 	};
 
 	return {

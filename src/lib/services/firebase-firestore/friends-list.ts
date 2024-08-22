@@ -5,7 +5,6 @@ import {
 	query,
 	where,
 	getDocs,
-	FirestoreError,
 	addDoc,
 	doc,
 	updateDoc,
@@ -49,12 +48,7 @@ export async function getFriends(uid: string) {
 		else throw new Error("No data found");
 	} catch (error) {
 		console.error(error);
-		return {
-			error: true,
-			name: "Query Get Error",
-			message: "Couldn't get data from friendsList collection",
-			data: error as Error,
-		} satisfies QueryResponseType<FirestoreError | Error>;
+		throw error as Error;
 	}
 }
 
@@ -101,6 +95,7 @@ export async function createFriend({
 			name,
 			image: imageURL,
 			balance: 0,
+			bill: 0,
 			uid,
 		};
 
@@ -113,22 +108,26 @@ export async function createFriend({
 			message: "successfully created friend data",
 			data: { ...friendData, id: docRef.id.toString() },
 		} satisfies QueryResponseType<FriendType>;
-	} catch (error) {}
+	} catch (error) {
+		throw error as Error;
+	}
 }
 
 // UPDATE
 export async function updateFriend({
 	friendId,
 	balance,
+	bill,
 	imageFile,
 }: {
 	friendId: string;
 	balance: number;
+	bill: number;
 	imageFile?: File;
 }) {
 	try {
 		const friendDocRef = doc(db, COLLECTION_NAME, friendId);
-		const updatedData: Partial<FriendType> = { balance };
+		const updatedData: Partial<FriendType> = { balance, bill };
 
 		if (imageFile) {
 			const imageRef = ref(
@@ -149,12 +148,7 @@ export async function updateFriend({
 		} satisfies QueryResponseType<null>;
 	} catch (error) {
 		console.error("Error updating document: ", error);
-		return {
-			error: true,
-			name: "error on update friend",
-			message: "failed to update",
-			data: error as FirestoreError,
-		} satisfies QueryResponseType<FirestoreError>;
+		throw error as Error;
 	}
 }
 
@@ -180,11 +174,6 @@ export async function deleteFriend({
 		} satisfies QueryResponseType<null>;
 	} catch (error) {
 		console.error("Error deleting document: ", error);
-		return {
-			error: true,
-			name: "error on delete friend",
-			message: "failed to delete friend data",
-			data: error as FirestoreError,
-		} satisfies QueryResponseType<FirestoreError>;
+		throw error as Error;
 	}
 }

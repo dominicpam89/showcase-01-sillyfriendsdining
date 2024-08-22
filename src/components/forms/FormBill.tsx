@@ -24,14 +24,16 @@ interface Props {
 }
 export default function FormBill({ person }: Props) {
 	const { onUpdateFriend, isPending } = useManageBill(person.id);
+	const expense = person.balance + person.bill / 2;
+	// const friendExpense = person.bill - expense;
 	const methods = useForm<FormBillSchemaType>({
 		mode: "onBlur",
 		reValidateMode: "onChange",
 		resolver: zodResolver(formBillSchema),
 		defaultValues: {
-			bill: "100" as any,
-			expense: "10" as any,
-			friendExpense: "90" as any,
+			bill: person.bill.toString() as any,
+			expense: expense.toString() as any,
+			friendExpense: "0" as any,
 			selectPerson: "you",
 		},
 	});
@@ -43,11 +45,11 @@ export default function FormBill({ person }: Props) {
 	}) => {
 		let balance = bill / 2;
 		if (selectPerson == "you") {
-			balance = expense - balance;
+			balance = expense! - balance;
 		} else {
 			balance -= friendExpense;
 		}
-		onUpdateFriend(balance);
+		onUpdateFriend(balance, bill);
 	};
 	const personWhoPay = methods.watch("selectPerson");
 	return (

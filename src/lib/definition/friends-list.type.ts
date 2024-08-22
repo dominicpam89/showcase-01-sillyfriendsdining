@@ -3,6 +3,7 @@ export type FriendType = {
 	name: string;
 	image: string;
 	balance: number;
+	bill: number;
 	uid: string; // user id of authenticated user
 };
 

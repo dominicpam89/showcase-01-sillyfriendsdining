@@ -20,19 +20,12 @@ export const formBillSchema = z
 			.transform((val) => parseFloat(val))
 			.refine((val) => !isNaN(val), {
 				message: "Expense must be a number.",
-			})
-			.refine((val) => val >= 1, {
-				message:
-					"You won't spend even just 1 cent? What are you? Minimum is 1",
 			}),
 		friendExpense: z
 			.string()
 			.transform((val) => parseFloat(val))
 			.refine((val) => !isNaN(val), {
 				message: "Friend's expense must be a number.",
-			})
-			.refine((val) => val >= 1, {
-				message: "Even a fake friend would spend 1 cent. Minimum is 1!",
 			}),
 		selectPerson: z.string().refine((val) => val !== "", {
 			message: "You must select a person.",
