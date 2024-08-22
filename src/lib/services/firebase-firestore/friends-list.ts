@@ -19,7 +19,8 @@ import {
 	uploadBytes,
 } from "firebase/storage";
 
-const cols = collection(db, "friendsList");
+const COLLECTION_NAME = "friendsList";
+const cols = collection(db, COLLECTION_NAME);
 
 export type QueryResponseType<T> = {
 	error: boolean;
@@ -56,7 +57,7 @@ export async function getFriends(uid: string) {
 // READ ONE BY ID
 export async function getFriend(friendId: string) {
 	try {
-		const friendDocRef = doc(db, "friendList", friendId);
+		const friendDocRef = doc(db, COLLECTION_NAME, friendId);
 		const friendDoc = await getDoc(friendDocRef);
 
 		if (friendDoc.exists()) {
@@ -108,7 +109,7 @@ export async function updateFriend(
 	imageFile?: File
 ) {
 	try {
-		const friendDocRef = doc(db, "friendList", friendId);
+		const friendDocRef = doc(db, COLLECTION_NAME, friendId);
 		const updatedData: Partial<FriendType> = { name };
 
 		if (imageFile) {
@@ -142,7 +143,7 @@ export async function updateFriend(
 // DELETE
 export async function deleteFriend(friendId: string, imageUrl: string) {
 	try {
-		const friendDocRef = doc(db, "friendList", friendId);
+		const friendDocRef = doc(db, COLLECTION_NAME, friendId);
 		const imageRef = ref(storage, imageUrl);
 
 		await deleteDoc(friendDocRef);
