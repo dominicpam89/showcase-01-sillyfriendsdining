@@ -9,6 +9,7 @@ const mockPerson: FriendType = {
 	image: "https://example.com/avatar.jpg",
 	balance: 1000,
 	uid: "asdqwe123aqweasd",
+	bill: 0,
 };
 
 it("renders the person's card with the correct information", () => {
