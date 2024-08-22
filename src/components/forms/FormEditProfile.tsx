@@ -10,17 +10,17 @@ import { useForm, FormProvider } from "react-hook-form";
 import InputGroup from "../common/InputGroup";
 import {
 	MailsIcon as EmailIcon,
-	KeySquareIcon as PasswordIcon,
 	CircleSlash2Icon as NameIcon,
-	KeyIcon,
+	FileImageIcon,
+	LogOutIcon,
 } from "lucide-react";
-import InputGroupFile from "../common/InputImage";
+import InputGroupFile from "@/components/common/InputImage";
+import { Button } from "@/components/ui/button";
 
 const iconClass = "w-full h-full opacity-80";
 
 export default function FormEditProfile() {
 	const { currentUser, logout } = useContext(ContextGlobal);
-	const isUserProfilePhoto = currentUser?.photoURL;
 	const methods = useForm<EditProfileSchemaType>({
 		mode: "onBlur",
 		reValidateMode: "onChange",
@@ -78,7 +78,7 @@ export default function FormEditProfile() {
 					name="email"
 					label="Email"
 					placeholder="Email"
-					icon={<NameIcon className={iconClass} />}
+					icon={<EmailIcon className={iconClass} />}
 					rules={{
 						validate: (val) => {
 							const result = emailValidator.safeParse(val);
@@ -93,6 +93,26 @@ export default function FormEditProfile() {
 						},
 					}}
 				/>
+
+				<InputGroupFile<EditProfileSchemaType>
+					buttonText="Update profile picture"
+					icon={<FileImageIcon className="size-4" />}
+					name="photo"
+					buttonVariant="ghost"
+					rules={{}}
+				/>
+				<div
+					aria-label="profile-actions"
+					className="w-full flex flex-col gap-2 items-center mt-12"
+				>
+					<Button className="w-full" type="submit">
+						Submit!
+					</Button>
+					<Button variant="link" onClick={logout} type="button">
+						<LogOutIcon className="mr-2 size-4" />
+						Logout
+					</Button>
+				</div>
 			</form>
 		</FormProvider>
 	);

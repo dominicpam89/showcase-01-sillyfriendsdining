@@ -14,12 +14,22 @@ interface Props<T extends FieldValues> {
 	name: Path<T>;
 	rules: RegisterOptions<T, Path<T>>;
 	buttonText: string;
+	buttonVariant?:
+		| "link"
+		| "default"
+		| "destructive"
+		| "outline"
+		| "secondary"
+		| "ghost"
+		| null
+		| undefined;
 }
 export default function InputGroupFile<T extends FieldValues>({
 	icon,
 	rules,
 	name,
 	buttonText,
+	buttonVariant = "secondary",
 }: Props<T>) {
 	const { formControl, nativeControl } = useImageUpload<T>(name);
 	const { register, errors, imageValue, onImageChange, trigger } = formControl;
@@ -37,7 +47,7 @@ export default function InputGroupFile<T extends FieldValues>({
 			<Button
 				onClick={() => inputImageRef.current?.click()}
 				onBlur={() => trigger(name)}
-				variant="outline"
+				variant={buttonVariant}
 				type="button"
 			>
 				<span className="size-4 mr-2">{icon}</span>

@@ -7,9 +7,11 @@ import { ContextGlobal } from "@/lib/context/global.context";
 
 interface Props {
 	submitText: string;
+	withReset?: boolean;
 }
 export default function FormButtons<T extends FieldValues>({
 	submitText,
+	withReset = true,
 }: Props) {
 	const { reset } = useFormContext<T>();
 	const [confirm, setConfirm] = useState(false);
@@ -17,16 +19,18 @@ export default function FormButtons<T extends FieldValues>({
 	return (
 		<div aria-label="form-buttons" className="flex gap-2 items-center w-full">
 			<Dialog open={confirm} onOpenChange={(o) => setConfirm(o)}>
-				<Button
-					variant="outline"
-					size="sm"
-					type="button"
-					className="w-full"
-					asChild
-					disabled={authLoading}
-				>
-					<DialogTrigger>Reset</DialogTrigger>
-				</Button>
+				{withReset && (
+					<Button
+						variant="outline"
+						size="sm"
+						type="button"
+						className="w-full"
+						asChild
+						disabled={authLoading}
+					>
+						<DialogTrigger>Reset</DialogTrigger>
+					</Button>
+				)}
 				<FormResetDialog
 					confirmBtn={
 						<Button
