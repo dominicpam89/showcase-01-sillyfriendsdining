@@ -155,7 +155,13 @@ export async function updateFriend(
 }
 
 // DELETE
-export async function deleteFriend(friendId: string, imageUrl: string) {
+export async function deleteFriend({
+	friendId,
+	imageUrl,
+}: {
+	friendId: string;
+	imageUrl: string;
+}) {
 	try {
 		const friendDocRef = doc(db, COLLECTION_NAME, friendId);
 		const imageRef = ref(storage, imageUrl);

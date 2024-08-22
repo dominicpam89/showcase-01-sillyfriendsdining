@@ -26,7 +26,7 @@ export default function Friend({ person }: Props) {
 			</div>
 			<div aria-label="action" className="w-4/12 flex gap-2 items-center">
 				<ManageBillDrawer person={person} />
-				<RemovePersonDialog />
+				<RemovePersonDialog person={person} />
 			</div>
 		</div>
 	);

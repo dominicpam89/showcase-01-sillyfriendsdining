@@ -28,7 +28,7 @@ export default function FriendsList() {
 		return (
 			<FriendListWrapper>
 				<h2 className="text-justify">
-					Oh my, you don't have friends, even just one? Pathetic!
+					Oh my, you don't have friends, not even one? You're pathetic!
 				</h2>
 			</FriendListWrapper>
 		);
