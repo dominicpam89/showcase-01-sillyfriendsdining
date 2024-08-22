@@ -37,20 +37,24 @@ export async function getFriends(uid: string) {
 		const friends: FriendType[] = snapshot.docs.map(
 			(doc) => doc.data() as FriendType
 		);
-		return {
-			error: false,
-			name: "query success",
-			message: "successfully fetch friends list",
-			data: friends,
-		} satisfies QueryResponseType<FriendType[]>;
+		let data = null;
+		if (friends) data = friends;
+		if (data)
+			return {
+				error: false,
+				name: "query success",
+				message: "successfully fetch friends list",
+				data,
+			} satisfies QueryResponseType<FriendType[]>;
+		else throw new Error("No data found");
 	} catch (error) {
 		console.error(error);
 		return {
 			error: true,
 			name: "Query Get Error",
 			message: "Couldn't get data from friendsList collection",
-			data: error as FirestoreError,
-		} satisfies QueryResponseType<FirestoreError>;
+			data: error as Error,
+		} satisfies QueryResponseType<FirestoreError | Error>;
 	}
 }
 
