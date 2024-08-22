@@ -14,7 +14,7 @@ import FormEditProfile from "../forms/FormEditProfile";
 import { LogOutIcon } from "lucide-react";
 
 export default function SimpleNav() {
-	const { currentUser } = useContext(ContextGlobal);
+	const { currentUser, logout } = useContext(ContextGlobal);
 	return (
 		<nav className="w-full flex gap-4 mb-6 items-center justify-end">
 			<Sheet>
@@ -30,7 +30,7 @@ export default function SimpleNav() {
 								{currentUser?.displayName}!
 							</span>
 						</SheetTitle>
-						<SheetDescription className="text-justify leading-6">
+						<SheetDescription className="text-justify leading-6 pb-8">
 							I don't know why you registered yourself in this app, but
 							yes i would gladly to facilitate you to edit your profile
 							here.{" "}
@@ -40,7 +40,12 @@ export default function SimpleNav() {
 						</SheetDescription>
 						<FormEditProfile />
 					</SheetHeader>
-					<Button variant="destructive" size="lg" className="mb-4 mx-4">
+					<Button
+						variant="destructive"
+						size="lg"
+						className="mb-4 mx-4"
+						onClick={logout}
+					>
 						<LogOutIcon className="mr-2 size-4" />
 						Logout
 					</Button>
