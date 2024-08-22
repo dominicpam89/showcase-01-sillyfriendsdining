@@ -45,12 +45,12 @@ export default function FormLogin({ switchTab }: Props) {
 				{authLoading && <Spinner size="large" />}
 				<FormErrorsDialog />
 				<div aria-label="form-heading" className="text-center space-y-2">
-					<h1 className="text-xl font-bold">Surprising</h1>
+					<h1 className="text-xl font-bold">Login Form</h1>
 					<p className="font-light">
-						You do really have account here? Ridiculous!{" "}
+						You do really have account here? Ridiculous! Anyway,
 						<FormAuthSwitch
 							switchTab={switchTab}
-							text="Anyway, go here if you aren't registered"
+							text="go here if you aren't registered"
 							val="register"
 						/>
 					</p>

@@ -1,6 +1,6 @@
 import AppContainer from "@/components/AppContainer";
 import AuthSelect from "./components/AuthSelect";
-import AppContent from "./components/AppContent";
+import MainApp from "./components/MainApp";
 import { useContext } from "react";
 import { ContextGlobal } from "./lib/context/global.context";
 
@@ -9,7 +9,7 @@ const App = () => {
 	return (
 		<AppContainer>
 			{!currentUser && <AuthSelect />}
-			{currentUser && <AppContent />}
+			{currentUser && <MainApp />}
 		</AppContainer>
 	);
 };

@@ -1,7 +1,7 @@
 import SimpleNav from "./common/SimpleNav";
 import FriendsList from "./FriendsList";
 
-export default function AppContent() {
+export default function MainApp() {
 	return (
 		<>
 			<SimpleNav />
