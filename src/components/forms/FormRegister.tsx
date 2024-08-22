@@ -57,6 +57,7 @@ export default function FormRegister({ switchTab }: Props) {
 							switchTab={switchTab}
 							text="already have account?"
 							val="login"
+							disabled={authLoading}
 						/>
 					</p>
 				</div>
@@ -65,29 +66,34 @@ export default function FormRegister({ switchTab }: Props) {
 						icon={<NameIcon className={iconClass} />}
 						name="firstName"
 						placeholder="John"
+						disabled={authLoading}
 					/>
 					<InputGroup<SchemaT>
 						icon={<NameIcon className={iconClass} />}
 						name="lastName"
 						placeholder="Doe"
+						disabled={authLoading}
 					/>
 				</div>
 				<InputGroup<SchemaT>
 					icon={<EmailIcon className={iconClass} />}
 					name="email"
 					placeholder="Email"
+					disabled={authLoading}
 				/>
 				<InputGroup<SchemaT>
 					icon={<PasswordIcon className={iconClass} />}
 					name="password"
 					inputType="password"
 					placeholder="Your Password"
+					disabled={authLoading}
 				/>
 				<InputGroup<SchemaT>
 					icon={<KeyIcon className={iconClass} />}
 					name="confirmationPassword"
 					inputType="password"
 					placeholder="Confirmation Password"
+					disabled={authLoading}
 				/>
 				<FormButtons<SchemaT>
 					submitText="Let's Go!"

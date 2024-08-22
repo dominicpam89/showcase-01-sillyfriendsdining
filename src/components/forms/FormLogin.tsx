@@ -52,6 +52,7 @@ export default function FormLogin({ switchTab }: Props) {
 							switchTab={switchTab}
 							text="go here if you aren't registered"
 							val="register"
+							disabled={authLoading}
 						/>
 					</p>
 				</div>
@@ -59,12 +60,14 @@ export default function FormLogin({ switchTab }: Props) {
 					icon={<EmailIcon className={iconClass} />}
 					name="email"
 					placeholder="Email"
+					disabled={authLoading}
 				/>
 				<InputGroup<SchemaT>
 					icon={<PasswordIcon className={iconClass} />}
 					name="password"
 					inputType="password"
 					placeholder="Your Password"
+					disabled={authLoading}
 				/>
 				<FormButtons<SchemaT>
 					submitText="Let's Go!"
