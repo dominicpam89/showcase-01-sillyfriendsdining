@@ -28,10 +28,9 @@ export default function SimpleNav() {
 								{currentUser?.displayName}!
 							</span>
 						</SheetTitle>
-						<SheetDescription className="text-justify leading-6 pb-8">
+						<SheetDescription className="text-justify text-xs leading-5 pb-8">
 							I don't know why you registered yourself in this app, but
-							yes i would gladly to facilitate you to edit your profile
-							here.{" "}
+							yes i'm obliged to facilitate editing profile.{" "}
 							<span className="text-info">
 								Just fill in the form below!
 							</span>
