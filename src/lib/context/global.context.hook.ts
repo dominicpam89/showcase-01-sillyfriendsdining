@@ -68,10 +68,10 @@ const useContextGlobal = () => {
 				message: "validation errors",
 			});
 			return;
-		} else setIsError(false);
+		}
 		try {
 			await firebaseRegisterUser(data);
-			setIsError(false);
+			clearErrors();
 		} catch (error) {
 			console.error(error);
 			setIsError(true);
@@ -97,10 +97,10 @@ const useContextGlobal = () => {
 				message: "validation errors",
 			});
 			return;
-		} else setIsError(false);
+		}
 		try {
 			await firebaseLogin(data);
-			setIsError(false);
+			clearErrors();
 		} catch (error) {
 			console.error(error);
 			setIsError(true);
@@ -118,7 +118,7 @@ const useContextGlobal = () => {
 		setAuthLoading(true);
 		try {
 			await signOut(auth);
-			setIsError(false);
+			clearErrors();
 		} catch (error) {
 			console.error("Error logging out", error);
 			setIsError(true);
