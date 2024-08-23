@@ -25,7 +25,7 @@ interface Props {
 	switchTab: (val: string) => void;
 }
 export default function FormRegister({ switchTab }: Props) {
-	const { registerUser, authLoading } = useContext(ContextGlobal);
+	const { registerUser, authLoading, isError } = useContext(ContextGlobal);
 	const methods = useForm<SchemaT>({
 		resolver: zodResolver(registerSchema),
 		defaultValues: {
@@ -48,7 +48,7 @@ export default function FormRegister({ switchTab }: Props) {
 				onSubmit={methods.handleSubmit(onValid)}
 			>
 				{authLoading && <Spinner size="large" />}
-				<FormErrorsDialog />
+				{isError && <FormErrorsDialog />}
 				<div aria-label="form-heading" className="text-center space-y-2">
 					<h1 className="text-xl font-bold">Register Form</h1>
 					<p className="font-light">

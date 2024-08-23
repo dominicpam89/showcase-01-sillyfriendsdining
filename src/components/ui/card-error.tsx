@@ -10,7 +10,7 @@ const Card = React.forwardRef<
 		aria-label="card-container"
 		ref={ref}
 		className={cn(
-			"p-2 w-full max-w-lg rounded-lg border bg-card text-card-foreground shadow-sm",
+			"w-full max-w-lg rounded-lg border bg-card text-card-foreground shadow-sm",
 			className
 		)}
 		{...props}
@@ -67,7 +67,7 @@ const CardContent = React.forwardRef<
 	<div
 		aria-label="card-content"
 		ref={ref}
-		className={cn("p-6 pt-0 flex flex-col gap-4", className)}
+		className={cn("p-4 pt-0 flex flex-col gap-4", className)}
 		{...props}
 	/>
 ));

@@ -25,6 +25,7 @@ const initialState: ContextState = {
 
 	authLoading: false,
 	onTriggerState: () => {},
+	clearErrors: () => {},
 };
 
 export const ContextGlobal = createContext(initialState);

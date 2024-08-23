@@ -35,6 +35,10 @@ const useContextGlobal = () => {
 	);
 	const [isError, setIsError] = useState(false);
 	const [authError, setAuthError] = useState<AuthErrorType>(initAuthError);
+	const clearErrors = () => {
+		setIsError(false);
+		setAuthError(initAuthError);
+	};
 
 	const [triggerAuthState, setTriggerAuthState] = useState(false);
 	const onTriggerState = () => setTriggerAuthState(!triggerAuthState);
@@ -102,7 +106,7 @@ const useContextGlobal = () => {
 			setIsError(true);
 			setAuthError({
 				name: "firebase auth",
-				message: "user failed to login",
+				message: "User failed to login",
 				additionalData: [],
 			});
 		} finally {
@@ -138,6 +142,7 @@ const useContextGlobal = () => {
 		authLoading,
 		isError,
 		onTriggerState,
+		clearErrors,
 	};
 };
 

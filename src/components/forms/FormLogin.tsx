@@ -23,7 +23,7 @@ interface Props {
 	switchTab: (val: string) => void;
 }
 export default function FormLogin({ switchTab }: Props) {
-	const { authLoading, loginUser } = useContext(ContextGlobal);
+	const { authLoading, loginUser, isError } = useContext(ContextGlobal);
 	const methods = useForm<SchemaT>({
 		resolver: zodResolver(loginSchema),
 		defaultValues: {
@@ -43,7 +43,7 @@ export default function FormLogin({ switchTab }: Props) {
 				onSubmit={methods.handleSubmit(onValid)}
 			>
 				{authLoading && <Spinner size="large" />}
-				<FormErrorsDialog />
+				{isError && <FormErrorsDialog />}
 				<div aria-label="form-heading" className="text-center space-y-2">
 					<h1 className="text-xl font-bold">Login Form</h1>
 					<p className="font-light">
