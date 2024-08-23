@@ -10,11 +10,13 @@ import { ContextGlobal } from "@/lib/context/global.context";
 import { useContext } from "react";
 import NavAvatar from "./NavAvatar";
 import FormEditProfile from "../forms/FormEditProfile";
+import { ToggleTheme } from "./ToggleTheme";
 
 export default function SimpleNav() {
 	const { currentUser } = useContext(ContextGlobal);
 	return (
-		<nav className="w-full flex gap-4 mb-6 items-center justify-end">
+		<nav className="w-full flex gap-4 mb-6 md:px-8 md:pt-4 items-center justify-between">
+			<ToggleTheme />
 			<Sheet>
 				<SheetTrigger>
 					<NavAvatar />
