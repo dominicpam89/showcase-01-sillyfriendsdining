@@ -26,4 +26,5 @@ export type ContextState = {
 	isError: boolean;
 	authError: AuthErrorType;
 	authLoading: boolean;
+	onTriggerState: () => void;
 };

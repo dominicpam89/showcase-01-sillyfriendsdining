@@ -17,7 +17,7 @@ const initAuthError = {
 	name: "",
 };
 
-const getUserInformation = (user: User) => {
+export const getUserInformation = (user: User) => {
 	return {
 		uid: user.uid,
 		email: user.email,
@@ -36,6 +36,9 @@ const useContextGlobal = () => {
 	const [isError, setIsError] = useState(false);
 	const [authError, setAuthError] = useState<AuthErrorType>(initAuthError);
 
+	const [triggerAuthState, setTriggerAuthState] = useState(false);
+	const onTriggerState = () => setTriggerAuthState(!triggerAuthState);
+
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (user) => {
 			if (user) {
@@ -47,7 +50,7 @@ const useContextGlobal = () => {
 			}
 		});
 		return unsubscribe;
-	}, [auth]);
+	}, [auth, triggerAuthState]);
 
 	const registerUser = async (data: RegisterSchemaType) => {
 		setAuthLoading(true);
@@ -134,6 +137,7 @@ const useContextGlobal = () => {
 		authError,
 		authLoading,
 		isError,
+		onTriggerState,
 	};
 };
 
